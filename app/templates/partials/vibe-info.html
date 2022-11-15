@@ -3,8 +3,8 @@
     <a>{{vibe.vibe_name}}</a>
   </div>
   <div class="meta">
-    by {{vibe.user.username}} on {{vibe.created_at}}
+    by {{vibe.user.username}} on {{vibe.created_at|format_date}}
     |
-    <a href="/vibe/{{vibe.id}}">{{vibe.songs|length}} song(s)</a>
+    <a href="/vibe/{{vibe.id}}">{{vibe.songs|length}} {{vibe.songs|length|format_plural('song')}}</a>
   </div>
 </article>

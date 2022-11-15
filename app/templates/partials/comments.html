@@ -2,13 +2,13 @@
   {% for song in songs %}
   <section class="comment">
     <div class="meta">
-      {{song.user.username}} on {{song.created_at}}
+      {{song.user.username}} on {{song.created_at|format_date}}
     </div>
     <div class="text">
       {{song.title}}
     </div>
     <div>
-      Votes: {{song.vote_count}}
+      {{song.vote_count}} {{song.vote_count|format_plural('point')}} 
     </div>
   </section>
   {% endfor %}

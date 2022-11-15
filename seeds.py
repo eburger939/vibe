@@ -24,10 +24,10 @@ db.commit()
 #seed vibes
 ######################
 db.add_all([
-  Vibe(vibe_name='Braitons house party', user_id=1),
-  Vibe(vibe_name='Stacys workout class', user_id=2),
-  Vibe(vibe_name='Emilys christmas party', user_id=3),
-  Vibe(vibe_name='Otters sleepy time', user_id=4)
+  Vibe(vibe_name="Braiton's house party", user_id=1),
+  Vibe(vibe_name="Stacy's workout class", user_id=2),
+  Vibe(vibe_name="Emily's christmas party", user_id=3),
+  Vibe(vibe_name="Otter's sleepy time", user_id=4)
 ])
 
 ######################
