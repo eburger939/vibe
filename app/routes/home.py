@@ -18,6 +18,11 @@ def index():
 def login():
     return render_template('login.html')
 
-@bp.route('/post/<id>')
+@bp.route('/vibe/<id>')
 def single(id):
-    return render_template('single-post.html')
+    db = get_db()
+    vibe = db.query(Vibe).filter(Vibe.id == id).one()
+    return render_template(
+        'single-vibe.html',
+        vibe=vibe
+        )

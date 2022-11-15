@@ -1,11 +1,14 @@
 <div class="comments">
-  {% for comment in comments %}
+  {% for song in songs %}
   <section class="comment">
     <div class="meta">
-      {{comment.user.username}} on {{comment.created_at}}
+      {{song.user.username}} on {{song.created_at}}
     </div>
     <div class="text">
-      {{comment.comment_text}}
+      {{song.title}}
+    </div>
+    <div>
+      Votes: {{song.vote_count}}
     </div>
   </section>
   {% endfor %}

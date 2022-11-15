@@ -1,7 +1,7 @@
 {% extends "layout/main.html" %}
 
 {% block body %}
-{% include "partials/post-info.html" %}
+{% include "partials/vibe-info.html" %}
 
 {% if loggedIn == True %}
 <form class="comment-form">
@@ -16,7 +16,7 @@
 </form>
 {% endif %}
 
-{% with comments=post.comments %}
+{% with songs=vibe.songs %}
   {% include "partials/comments.html" %}
 {% endwith %}
 
