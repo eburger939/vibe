@@ -2,6 +2,7 @@ from flask import Flask
 #importing bp (as home) from the home __init__.py file; imported directly from app.routes (vs app.routes.home) because
 #the __init__.py file in routes imported and renamed the blueprint 
 from app.routes import home, dashboard
+from app.db import init_db
 
 def create_app(test_config=None):
     #set up app config
@@ -19,4 +20,5 @@ def create_app(test_config=None):
     app.register_blueprint(home)
     app.register_blueprint(dashboard)
 
+    init_db()
     return app 

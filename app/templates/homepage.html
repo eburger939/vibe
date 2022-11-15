@@ -1,10 +1,10 @@
 {% extends "layout/main.html" %}
 
 {% block body %}
-<ol class="post-list">
-  {% for post in posts %}
+<ol>
+  {% for vibe in vibes %}
   <li>
-    {% include "partials/post-info.html" %}
+    {% include "partials/vibe-info.html" %}
   </li>
   {% endfor %}
 </ol>

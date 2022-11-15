@@ -1,0 +1,10 @@
+<article class="post">
+  <div class="title">
+    <a>{{vibe.vibe_name}}</a>
+  </div>
+  <div class="meta">
+    by {{vibe.user.username}} on {{vibe.created_at}}
+    |
+    <a href="/vibe/{{vibe.id}}">{{vibe.songs|length}} song(s)</a>
+  </div>
+</article>
