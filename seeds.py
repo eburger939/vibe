@@ -1,4 +1,4 @@
-from app.models import User, Song
+from app.models import User, Song, Vote
 from app.db import Session, Base, engine
 
 
@@ -23,7 +23,6 @@ db.commit()
 ######################
 #seed song information
 ######################
-# insert posts
 db.add_all([
   Song(title='Dont stop believing', author='Journey', song_url='', user_id=1),
   Song(title='Billie Jean', author='Michael Jackson', song_url='', user_id=1),
@@ -34,6 +33,17 @@ db.add_all([
 
 db.commit()
 
+######################
+#seed votes
+######################
+db.add_all([
+  Vote(user_id=1, song_id=2),
+  Vote(user_id=1, song_id=4),
+  Vote(user_id=2, song_id=4),
+  Vote(user_id=3, song_id=4),
+  Vote(user_id=4, song_id=2)
+])
 
+db.commit()
 
 db.close()
