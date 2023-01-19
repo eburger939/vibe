@@ -30,8 +30,46 @@ def signup():
     return jsonify(id = newUser.id)
 
 
+
+
 @bp.route('/users/logout', methods=['POST'])
 def logout():
     #remove session variables
     session.clear()
     return '', 204
+
+
+@bp.route('/users/login', methods=['POST'])
+def login():
+    #check to see if users info already exists in the db, if not an error with throw and user needs to register
+    data = request.get_json()
+    db=get_db()
+    # print(data['email'])
+    # users = db.query(User).filter(User.email == data['email']).one()
+    # print('all the users',users)
+    # return users
+
+    try: 
+        user = db.query(User).filter(User.email == data['email']).one()
+        # user = db.query(User)
+        # print('this is the user information', user)
+        # print('data password', data['password'].encode('utf-8'))
+        # print(user.email)
+        # print(user.password)
+        # print('User', data['password'])
+        # verify = User.verify_password(data['password'], user.password)
+        # print('verify', verify)
+        verifying = user.verify_password(data['password'])
+        print('verifying', verifying)
+    except:
+        print(sys.exc_info()[0])
+    
+    if user.verify_password(data['password']) == False:
+        return jsonify(message = 'Incorrect credentials'), 400
+
+    session.clear()
+    session['user_id'] = user.id
+    session['loggedIn'] = True
+
+    return jsonify(id=user.id)
+    # return data

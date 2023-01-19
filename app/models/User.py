@@ -21,3 +21,11 @@ class User(Base):
     def validate_password(self, key, password):
         assert len(password) > 4
         return bcrypt.hashpw(password.encode('utf-8'), salt)   
+    
+    def verify_password(self, password):
+        print('self', self)
+        print('pw', password)
+        return bcrypt.checkpw(
+            password.encode('utf-8'),
+            self.password.encode('utf-8')
+        )
