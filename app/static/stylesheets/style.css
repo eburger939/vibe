@@ -137,6 +137,11 @@
     background-color: #197d0f;
     transition: background-color .1s;
   }
+
+  .dnvote-btn {
+    background-color: #140f7d;
+    transition: background-color .1s;
+  }
   
   .upvote-btn:hover {
     background-color: #1f9c13;
@@ -146,16 +151,16 @@
     margin-bottom: 5%;
   }
   
-  .comment {
+  .vote {
     padding: 1%;
     margin-bottom: 1%;
   }
   
-  .comment:nth-child(odd) {
+  .vote:nth-child(odd) {
     background-color: #fff5eb;
   }
   
-  .comment .meta {
+  .vote .meta {
     font-size: 90%;
     margin-bottom: .5%;
     opacity: .6;

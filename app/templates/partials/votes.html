@@ -1,6 +1,6 @@
-<div class="comments">
+<div class="votes">
   {% for song in songs %}
-  <section class="comment">
+  <section class="vote">
     <div class="meta">
       {{song.user.username}} on {{song.created_at|format_date}}
     </div>
@@ -10,6 +10,12 @@
     <div>
       {{song.vote_count}} {{song.vote_count|format_plural('point')}} 
     </div>
+    {% if loggedIn == True %}
+    <div>
+      <button type="button" class="upvote-btn" id="{{song.id}}">upvote{{song.id}}</button>
+      <button type="button" class="dnvote-btn">downvote</button>
+    </div>
+    {% endif %}
   </section>
   {% endfor %}
 </div>

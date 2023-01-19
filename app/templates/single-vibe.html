@@ -3,21 +3,9 @@
 {% block body %}
 {% include "partials/vibe-info.html" %}
 
-{% if loggedIn == True %}
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
-
-  <div>
-    <button type="submit">add comment</button>
-    <button type="button" class="upvote-btn">upvote</button>
-  </div>
-</form>
-{% endif %}
 
 {% with songs=vibe.songs %}
-  {% include "partials/comments.html" %}
+  {% include "partials/votes.html" %}
 {% endwith %}
 
 {% if loggedIn == True %}

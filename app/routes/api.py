@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, session
-from app.models import User
+from app.models import User, Vibe, Song, Vote 
 from app.db import get_db
 import sys
 
@@ -44,10 +44,6 @@ def login():
     #check to see if users info already exists in the db, if not an error with throw and user needs to register
     data = request.get_json()
     db=get_db()
-    # print(data['email'])
-    # users = db.query(User).filter(User.email == data['email']).one()
-    # print('all the users',users)
-    # return users
 
     try: 
         user = db.query(User).filter(User.email == data['email']).one()
@@ -64,3 +60,27 @@ def login():
     session['loggedIn'] = True
 
     return jsonify(id=user.id)
+
+
+@bp.route('/posts/upvote', methods=['PUT'])
+def upvote():
+    data = request.get_json()
+    db = get_db()
+
+    print('this is the data',data)
+
+    try:
+        #creating new vote with incoming id and session id
+        newVote = Vote(
+            song_id = data['song_id'],
+            user_id = session.get('user_id')
+        )
+        db.add(newVote)
+        db.commit()
+    except:
+        print(sys.exc_info()[0])
+
+        db.rollback()
+        return jsonify(message = "Upvote failed"), 500
+
+    return '', 204
