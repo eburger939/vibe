@@ -15,9 +15,16 @@ def index():
         vibes=vibes,
         loggedIn=session.get('loggedIn'))
 
+
+
 @bp.route('/login')
 def login():
-    return render_template('login.html')
+    #if user is already logged in then the dashboard will render and option to login will be removed 
+    if session.get('loggedIn') is None:
+        return render_template('login.html')
+    return redirect('/dashboard')
+
+
 
 @bp.route('/vibe/<id>')
 def single(id):
