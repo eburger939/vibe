@@ -1,9 +1,10 @@
 from flask import Flask
 #importing bp (as home) from the home __init__.py file; imported directly from app.routes (vs app.routes.home) because
 #the __init__.py file in routes imported and renamed the blueprint 
-from app.routes import home, dashboard
+from app.routes import home, dashboard, api
 from app.db import init_db
 from app.utils import filters
+
 
 def create_app(test_config=None):
     #set up app config
@@ -20,6 +21,7 @@ def create_app(test_config=None):
     #registers the home blueprint
     app.register_blueprint(home)
     app.register_blueprint(dashboard)
+    app.register_blueprint(api)
     app.jinja_env.filters['format_date'] = filters.format_date
     app.jinja_env.filters['format_plural'] = filters.format_plural
 
