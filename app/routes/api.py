@@ -51,14 +51,6 @@ def login():
 
     try: 
         user = db.query(User).filter(User.email == data['email']).one()
-        # user = db.query(User)
-        # print('this is the user information', user)
-        # print('data password', data['password'].encode('utf-8'))
-        # print(user.email)
-        # print(user.password)
-        # print('User', data['password'])
-        # verify = User.verify_password(data['password'], user.password)
-        # print('verify', verify)
         verifying = user.verify_password(data['password'])
         print('verifying', verifying)
     except:
@@ -72,4 +64,3 @@ def login():
     session['loggedIn'] = True
 
     return jsonify(id=user.id)
-    # return data
